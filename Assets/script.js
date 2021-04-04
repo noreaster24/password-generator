@@ -1,62 +1,51 @@
 // Generate the password
 function generatePassword() {
-  debugger;
+  // Ask the user which character types they'd like to use
+  var useUpperCase = confirm("Would you like to use uppercase letters?");
+  var useNumberChar = confirm("Would you like to use numbers?");
+  var useSymbolChar = confirm("Would you like to use special symbols?");
   var passwordLength = prompt("How many characters would you like your password to be?");
   console.log(passwordLength);
-  // Generate random characters
-  function randomCharacters() {
-    if (useUpperCase === true) {
-      getUpperCase();
-    }
-    if (useLowerCase === true) {
-      getLowerCase();
-    }
-    if (useNumberChar === true) {
-      getNumbers();
-    }
-    if (useSymbolChar === true) {
-      getSymbol()
-    }
-  }
+  debugger;
+  // Confirm password meets the length requirements
   if (passwordLength > 7 && passwordLength < 129) {
-    for (var i = 0; i < passwordLength.length; i++) {
-      randomCharacters();
+    // Default characgters to lowercase
+    var charCodes = lowerCase
+    // If uppercase characters are accepted, join with string
+    if (useUpperCase) charCodes = charCodes.concat(upperCase)
+    // If symbol characters are accepted, join with string
+    if (useSymbolChar) charCodes = charCodes.concat(symbolChar)
+    // If number characters are accepted, join with string
+    if (useNumberChar) charCodes = charCodes.concat(numberChar)
+        
+    // String loop based on password length
+    var passwordCharacters = []
+    for (var i = 0; i < passwordLength; i++) {
+      var characterCode = charCodes[Math.floor(Math.random() * charCodes)]
+      passwordCharacters.push(String.fromCharCode(characterCode))
     }
-    return randomCharacters;
+    return passwordCharacters.join('')
   }
   else {
     alert("You need to choose a password that is between 8 and 128 characters");
   }
 };
 
-// Is this needed?
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCase = "abcdefghijklmnopqrstuvwyz";
-var numberChar = "0123456789";
-var symbolChar = "!@#$%^&*()_+=-/.,?><:;"
+// Assign array to each character type
+var lowerCase = arrayFromLowToHigh(97, 122);
+var upperCase = arrayFromLowToHigh(65, 90);
+var numberChar = arrayFromLowToHigh(48, 57);
+var symbolChar = arrayFromLowToHigh(33, 47);
 var characterSet = "";
 
-// Ask the user which character types they'd like to use
-var useUpperCase = confirm("Would you like to use uppercase letters?");
-var useLowerCase = confirm("Would you like to use lowercase letters?");
-var useNumberChar = confirm("Would you like to use numbers?");
-var useSymbolChar = confirm("Would you like to use special symbols?");
-
-
-// Generate character functions
-function getUpperCase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-function getLowerCase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-function getNumbers() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 48);
-}
-function getSymbol() {
-  return String.fromCharCode(Math.floor(Math.random()));
-}
-
+// Create an array for the character types
+function arrayFromLowToHigh(low, high) {
+  var array = []
+  for (let i = low; i <= high; i++) {
+    array.push(i)
+  }
+  return array
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
