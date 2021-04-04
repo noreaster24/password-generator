@@ -3,7 +3,7 @@ function generatePassword(useUpperCase, useSymbolChar, useNumberChar, passwordLe
   // Ask the user which character types they'd like to use
   var useUpperCase = confirm("Would you like to use uppercase letters?");
   var useNumberChar = confirm("Would you like to use numbers?");
-  var useSymbolChar = confirm("Would you like to use special symbols?");
+  var useSymbolChar = confirm("Would you like to use special characters?");
   var passwordLength = prompt("How many characters would you like your password to be?");
   console.log(passwordLength);
   debugger;
