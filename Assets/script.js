@@ -1,5 +1,5 @@
 // Generate the password
-function generatePassword() {
+function generatePassword(useUpperCase, useSymbolChar, useNumberChar, passwordLength) {
   // Ask the user which character types they'd like to use
   var useUpperCase = confirm("Would you like to use uppercase letters?");
   var useNumberChar = confirm("Would you like to use numbers?");
@@ -9,19 +9,19 @@ function generatePassword() {
   debugger;
   // Confirm password meets the length requirements
   if (passwordLength > 7 && passwordLength < 129) {
-    // Default characgters to lowercase
+    // Default characters to lowercase
     var charCodes = lowerCase
     // If uppercase characters are accepted, join with string
-    if (useUpperCase) charCodes = charCodes.concat(upperCase)
+    if (useUpperCase) charCodes = charCodes.concat(upperCase);
     // If symbol characters are accepted, join with string
-    if (useSymbolChar) charCodes = charCodes.concat(symbolChar)
+    if (useSymbolChar) charCodes = charCodes.concat(symbolChar);
     // If number characters are accepted, join with string
     if (useNumberChar) charCodes = charCodes.concat(numberChar)
         
     // String loop based on password length
     var passwordCharacters = []
     for (var i = 0; i < passwordLength; i++) {
-      var characterCode = charCodes[Math.floor(Math.random() * charCodes)]
+      const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
       passwordCharacters.push(String.fromCharCode(characterCode))
     }
     return passwordCharacters.join('')
