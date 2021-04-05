@@ -1,6 +1,6 @@
 // Generate the password
 function generatePassword(useUpperCase, useSymbolChar, useNumberChar, passwordLength) {
-  // Ask the user which character types they'd like to use
+  // Ask the user which character types they would like to use
   var useUpperCase = confirm("Would you like to use uppercase letters?");
   var useNumberChar = confirm("Would you like to use numbers?");
   var useSymbolChar = confirm("Would you like to use special characters?");
