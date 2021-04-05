@@ -6,7 +6,6 @@ function generatePassword(useUpperCase, useSymbolChar, useNumberChar, passwordLe
   var useSymbolChar = confirm("Would you like to use special characters?");
   var passwordLength = prompt("How many characters would you like your password to be?");
   console.log(passwordLength);
-  debugger;
   // Confirm password meets the length requirements
   if (passwordLength > 7 && passwordLength < 129) {
     // Default characters to lowercase
